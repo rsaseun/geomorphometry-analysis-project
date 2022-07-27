@@ -1,72 +1,11 @@
-# geomorphometry-analysis-project
+## README
+
+Geomorphometry-analysis-project
+
 Tools of analysis for geomorphometry for spatial planning of sub-watershed to address soil erosion challenges
 
-# Computational procedure for the Geomorphometry of the Anambra Basin
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-#Step 1: Install needed libraries
+As part of the attribution, kindly cite this material as part of the reference this project:
 
-library(raster)
-
-library(ggplot2)
-
-library(tidyverse)
-
-library(raster)
-
-library(sf)
-
-library(whitebox)
-
-library(tmap)
-
-
-#Step 2: set working directory
-
-
-setwd("C:/data/R data/Geomorphmetric prioritization of the Anambra Basin")
-
-r = raster("Elevation.tif")
-
-#Step 3: Process raster data for terrain layers and attributes
-
-r = aggregate(r, fact = 5)
-
-plot(r)
-
-df = as.data.frame(r, xy = TRUE)
-
-ggplot()+
-  geom_tile(data = df, aes(x = x, y = y, fill = Elevation))+
-  scale_fill_gradientn(colors = terrain.colors(5))+
-  theme_bw()
-
-
-#Step 4: Create terrain layers
-
-#1. Slope
-
-slp = terrain(r, opt = "slope", unit = "degrees")
-
-slp_df = as.data.frame(slp,xy = TRUE)
-
-ggplot()+
-  geom_tile(data = slp_df, aes(x = x, y = y, fill = slope))+
-  scale_fill_gradientn(colors = topo.colors(10))+
-  theme_bw()
-
-#2. Aspect
-
-asp = terrain(r, opt = "aspect", unit = "degrees")
-
-asp_df = as.data.frame(asp, xy = TRUE)
-
-ggplot()+
-  geom_tile(data = asp_df, aes(x = x, y = y, fill = aspect))+
-  scale_fill_gradientn(colors = rainbow(10))+
-  theme_bw()
-
-#Step 5: save raster layers for further geospatial analysis
-
-writeRaster(slp, "slope.tif", NAflag = -9999, overwrite = TRUE)
-
-list.files()
+Raji, S.A., Akintuyi, A. O., Wunude, E. & Fashoto, B. (2022). Prioritization of sub-watersheds of Anambra River Basin for gully erosion risk mapping using GIS-based geomorphometric analysis. Under review at The International Journal of River Basin Management.
