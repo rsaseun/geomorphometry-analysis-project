@@ -6,11 +6,17 @@ Tools of analysis for geomorphometry for spatial planning of sub-watershed to ad
 #Step 1: Install needed libraries
 
 library(raster)
+
 library(ggplot2)
+
 library(tidyverse)
+
 library(raster)
+
 library(sf)
+
 library(whitebox)
+
 library(tmap)
 
 
